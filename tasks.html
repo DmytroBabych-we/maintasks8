@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Завдання</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.wide{display:block;margin-top:44px}
+.wide .box{margin-bottom:36px;text-align:left}
+.wide p{margin:6px 0}
+.scroll{overflow-x:auto}
+.scroll table{min-width:760px;text-align:center}
+.scroll th,.scroll td{text-align:center;border:1px solid #000}
+.scroll tbody th{background:#000;color:#fff}
+.sample{width:auto;min-width:360px;text-align:center}
+.sample th,.sample td{border:1px solid #000;text-align:center;padding:8px 16px}
+.sample th{background:#000;color:#fff}
+.variant{display:flex;gap:12px;align-items:center;margin:12px 0}
+.variant input{font:inherit;width:80px;padding:6px 10px;border:2px solid #000}
+</style></head><body><div class="frame">
+<header><a class="logo" href="index.html">Логотип</a>
+<nav><a href="index.html">Головна</a><a href="tasks.html" class="active" aria-current="page">Завдання</a><a href="team.html">Моя команда</a></nav></header>
+<main class="wide">
+<section class="box">
+<h1>Завдання 2. Таблиця множення (діапазон 11–20)</h1>
+<p><b>Вимога:</b> побудувати HTML-таблицю розміром 10 × 10.</p>
+<p><b>Стовпці:</b> числа від 11 до 20, помножені на номер варіанта N.</p>
+<p><b>Рядки:</b> 10 чисел, кратних 7, починаючи з 14 (14, 21, 28, 35, 42, 49, 56, 63, 70, 77).</p>
+<p><b>Комірки:</b> результат множення рядка на стовпець.</p>
+</section>
+<section class="box">
+<h1>Приклад для варіанта N = 2</h1>
+<div class="scroll"><table class="sample"><thead><tr><th colspan="5">Зразок для варіанта 2</th></tr></thead><tbody><tr><td></td><th>22</th><th>24</th><td>…</td><th>40</th></tr><tr><th>14</th><td>308</td><td>336</td><td>…</td><td>560</td></tr><tr><th>21</th><td>462</td><td>504</td><td>…</td><td>840</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr><th>77</th><td>1694</td><td>1848</td><td>…</td><td>3080</td></tr></tbody></table></div>
+</section>
+<section class="box">
+<h1>Виконане завдання</h1>
+<div class="variant"><label for="n">Номер варіанта N:</label><input id="n" type="number" min="1" value="2"></div>
+<div class="scroll"><table id="result"><thead><tr><th class="corner">×</th><th scope="col">22</th><th scope="col">24</th><th scope="col">26</th><th scope="col">28</th><th scope="col">30</th><th scope="col">32</th><th scope="col">34</th><th scope="col">36</th><th scope="col">38</th><th scope="col">40</th></tr></thead><tbody><tr><th scope="row">14</th><td>308</td><td>336</td><td>364</td><td>392</td><td>420</td><td>448</td><td>476</td><td>504</td><td>532</td><td>560</td></tr><tr><th scope="row">21</th><td>462</td><td>504</td><td>546</td><td>588</td><td>630</td><td>672</td><td>714</td><td>756</td><td>798</td><td>840</td></tr><tr><th scope="row">28</th><td>616</td><td>672</td><td>728</td><td>784</td><td>840</td><td>896</td><td>952</td><td>1008</td><td>1064</td><td>1120</td></tr><tr><th scope="row">35</th><td>770</td><td>840</td><td>910</td><td>980</td><td>1050</td><td>1120</td><td>1190</td><td>1260</td><td>1330</td><td>1400</td></tr><tr><th scope="row">42</th><td>924</td><td>1008</td><td>1092</td><td>1176</td><td>1260</td><td>1344</td><td>1428</td><td>1512</td><td>1596</td><td>1680</td></tr><tr><th scope="row">49</th><td>1078</td><td>1176</td><td>1274</td><td>1372</td><td>1470</td><td>1568</td><td>1666</td><td>1764</td><td>1862</td><td>1960</td></tr><tr><th scope="row">56</th><td>1232</td><td>1344</td><td>1456</td><td>1568</td><td>1680</td><td>1792</td><td>1904</td><td>2016</td><td>2128</td><td>2240</td></tr><tr><th scope="row">63</th><td>1386</td><td>1512</td><td>1638</td><td>1764</td><td>1890</td><td>2016</td><td>2142</td><td>2268</td><td>2394</td><td>2520</td></tr><tr><th scope="row">70</th><td>1540</td><td>1680</td><td>1820</td><td>1960</td><td>2100</td><td>2240</td><td>2380</td><td>2520</td><td>2660</td><td>2800</td></tr><tr><th scope="row">77</th><td>1694</td><td>1848</td><td>2002</td><td>2156</td><td>2310</td><td>2464</td><td>2618</td><td>2772</td><td>2926</td><td>3080</td></tr></tbody></table></div>
+</section>
+</main></div>
+<script>
+const rows=[14,21,28,35,42,49,56,63,70,77];
+function build(n){
+  let h='<thead><tr><th class="corner">×</th>';
+  for(let c=11;c<=20;c++)h+='<th scope="col">'+c*n+'</th>';
+  h+='</tr></thead><tbody>';
+  rows.forEach(r=>{h+='<tr><th scope="row">'+r+'</th>';
+    for(let c=11;c<=20;c++)h+='<td>'+r*c*n+'</td>';h+='</tr>';});
+  document.getElementById('result').innerHTML=h+'</tbody>';
+}
+document.getElementById('n').addEventListener('input',e=>{const n=parseInt(e.target.value,10);if(n>0)build(n);});
+</script>
+</body></html>
